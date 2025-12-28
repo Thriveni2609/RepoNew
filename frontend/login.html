@@ -1,1 +1,144 @@
+📁 Folder structure
+frontend/
+├── login.html
+├── dashboard.html
+└── styles.css
 
+
+Create a folder named frontend and add these 3 files.
+
+🔐 frontend/login.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | AI Expense Detector</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="center">
+  <div class="card">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
+
+🏠 frontend/dashboard.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard | AI Expense Detector</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <h3>Menu</h3>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('add')">Add Expense</a>
+  <a onclick="showPage('summary')">Monthly Summary</a>
+  <a onclick="logout()">Logout</a>
+</div>
+
+<div class="main">
+  <div id="home" class="page">
+    <h2>Welcome</h2>
+    <p>This is the AI Expense Detector dashboard.</p>
+  </div>
+
+  <div id="add" class="page hidden">
+    <h2>Add Expense</h2>
+    <input placeholder="Date (YYYY-MM-DD)">
+    <input placeholder="Category (Groceries, Travel)">
+    <input placeholder="Amount">
+    <button>Add Expense</button>
+  </div>
+
+  <div id="summary" class="page hidden">
+    <h2>Monthly Summary</h2>
+    <p>Groceries: ₹2000</p>
+    <p>Travelling: ₹1000</p>
+  </div>
+</div>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    document.getElementById(pageId).classList.remove('hidden');
+  }
+
+  function logout() {
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
+
+🎨 frontend/styles.css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 260px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+input, button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  position: fixed;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  margin: 12px 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
